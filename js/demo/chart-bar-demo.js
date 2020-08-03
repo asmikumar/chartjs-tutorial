@@ -13,7 +13,14 @@ var barColor = new Chart(ctx, {
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
       data: [4215, 5312, 6251, 7841, 9821, 14984],
-    }],
+    },
+    {
+      label: "Expenses",
+      backgroundColor: "rgba(100,100,100,1)",
+      borderColor: "rgba(100,100,100,1)",
+      data: [3000, 4000, 2310, 4509, 9981, 14000],
+    }
+    ],
   },
   options: {
     scales: {
@@ -40,7 +47,7 @@ var barColor = new Chart(ctx, {
       }],
     },
     legend: {
-      display: false
+      display: true
     }
   }
 });
