@@ -3,30 +3,36 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
-var ctx = document.getElementById("barColor");
-var barColor = new Chart(ctx, {
+var ctx = document.getElementById("bar");
+var bar = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["2000", "2005", "2010", "2015", "2020"],
     datasets: [{
-      label: "Revenue",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      label: "India",
+      backgroundColor: "dodgerblue",
+      borderColor: "transparent",
+      data: [1057, 1148, 1234, 1310, 1380],
     },
     {
-      label: "Expenses",
-      backgroundColor: "rgba(100,100,100,1)",
-      borderColor: "rgba(100,100,100,1)",
-      data: [3000, 4000, 2310, 4509, 9981, 14000],
-    }
+      label: "China",
+      backgroundColor: "purple",
+      borderColor: "transparent",
+      data: [1291, 1331, 1369, 1407, 1439],
+    },
+    {
+      label: "United States",
+      backgroundColor: "red",
+      borderColor: "transparent",
+      data: [282, 295, 309, 321, 331],
+    },
     ],
   },
   options: {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'year'
         },
         gridLines: {
           display: false
@@ -38,8 +44,6 @@ var barColor = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
-          maxTicksLimit: 5
         },
         gridLines: {
           display: true

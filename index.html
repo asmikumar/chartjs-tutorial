@@ -11,23 +11,26 @@
 
     <title>Demo Page</title>
 
+    <!-- Chart.js import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap core JS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Page level plugin CSS-->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Plugin to read CSV, Excel files -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource"></script> -->
-
   </head>
+
+ <style>
+ 	body {
+    margin-top: 20px;
+}
+ </style>
 
   <body id="page-top">
 
@@ -37,86 +40,107 @@
 
         <div class="container-fluid">
 
-          <!-- DataTables Example -->
-          <!-- <div class="col-lg-12"> -->
+          <center>
+          	<h2><i class="fa fa-star"></i> World Population Demographics: A Tutorial on Chart.js <i class="fa fa-star"></i></h2>
+          	<h4>Asmi Kumar</h4>
+          </center>
+
+          <p></p>
+
+          <style type="text/css">
+          	  table#dataTable{
+			  table-layout:fixed;
+			}
+          </style>
+
+          	<!-- DataTables Example -->
             <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-table"></i>
-                Progress Table</div>
+                Distribution of the global population in 2020, by age group and world region (%)</div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" height='50%' cellspacing="0">
+                  <table class="table table-bordered" id="dataTable">
                     <thead>
                       <tr>
-                        <th>Title</th>
-                        <th>Title</th>
-                        <th>Title</th>
-                        <th>Title</th>
+                        <th>World region</th>
+                        <th>0-14</th>
+                        <th>15-24</th>
+                        <th>25-49</th>
+                        <th>50 and over</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
+                        <td>Asia</td>
+                        <td>23.5</td>
+                        <td>15.4</td>
+                        <td>36.6</td>
+                        <td>24.5</td>
                       </tr>
                       <tr>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
+                        <td>Africa</td>
+                        <td>40.3</td>
+                        <td>19.3</td>
+                        <td>29.2</td>
+                        <td>11.2</td>
                       </tr>
                       <tr>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
+                        <td>Latin America/Caribbean</td>
+                        <td>23.9</td>
+                        <td>16.5</td>
+                        <td>36.2</td>
+                        <td>23.4</td>
                       </tr>
                       <tr>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
-                        <td>Text</td>
+                        <td>Europe</td>
+                        <td>16.1</td>
+                        <td>10.3</td>
+                        <td>34.1</td>
+                        <td>39.6</td>
+                      </tr>
+                      <tr>
+                        <td>Northern America</td>
+                        <td>18.1</td>
+                        <td>13.0</td>
+                        <td>33.0</td>
+                        <td>35.9</td>
+                      </tr>
+                      <tr>
+                        <td>Oceania</td>
+                        <td>23.6</td>
+                        <td>14.3</td>
+                        <td>33.6</td>
+                        <td>28.5</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-          <!-- </div> -->
-
+          
           <!-- Line Chart Example -->
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fas fa-chart-line"></i>
-                Line Chart Example</div>
-              <div class="card-body">
-                <canvas id="lineProgress" width="100%" height="30"></canvas>
-              </div>
-            </div>
-
-          <!-- Bar Chart Example -->
           <div class="row">
-            <div class="col-lg-6">
+          	<div class="col-lg-6">
               <div class="card mb-3">
-                <div class="card-header">
-                  <i class="fas fa-chart-bar"></i>
-                  Bar Chart Example</div>
-                <div class="card-body">
-                  <canvas id="barColor" width="100%" height="50"></canvas>
+	            <div class="card-header">
+	                <i class="fas fa-chart-line"></i>
+	                World population growth rate (%)</div>
+	            <div class="card-body">
+                  <canvas id="line"></canvas>
                 </div>
               </div>
             </div>
+            
 
             <!-- Bar Chart Example -->
             <div class="col-lg-6">
               <div class="card mb-3">
                 <div class="card-header">
                   <i class="fas fa-chart-bar"></i>
-                  Bar Chart Example</div>
+                  India vs. China vs. United States population (in millions)</div>
                 <div class="card-body">
-                  <canvas id="barShape" width="100%" height="50"></canvas>
+                  <canvas id="bar"></canvas>
                 </div>
               </div>
             </div>
@@ -128,35 +152,9 @@
               <div class="card mb-3">
                 <div class="card-header">
                   <i class="fas fa-chart-area"></i>
-                  Scatter Chart Example</div>
+                  GDP per capita vs. life expectancy at birth</div>
                 <div class="card-body">
-                  <canvas id="scatterSize" width="100%" height="50"></canvas>
-                </div>
-              </div>
-            </div>
-
-            <!-- Scatter Chart Example -->
-            <div class="col-lg-6">
-              <div class="card mb-3">
-                <div class="card-header">
-                  <i class="fas fa-chart-area"></i>
-                  Scatter Chart Example</div>
-                <div class="card-body">
-                  <canvas id="scatterSpeed" width="100%" height="50"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pie Chart Example -->
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card mb-3">
-                <div class="card-header">
-                  <i class="fas fa-chart-pie"></i>
-                  Pie Chart Example</div>
-                <div class="card-body">
-                  <canvas id="pieColor" width="100%" height="50"></canvas>
+                  <canvas id="scatter"></canvas>
                 </div>
               </div>
             </div>
@@ -166,9 +164,9 @@
               <div class="card mb-3">
                 <div class="card-header">
                   <i class="fas fa-chart-pie"></i>
-                  Pie Chart Example</div>
+                  North American population distribution in 2020, by age group (%)</div>
                 <div class="card-body">
-                  <canvas id="pieShape" width="100%" height="50"></canvas>
+                  <canvas id="pie" width="100%" height="50"></canvas>
                 </div>
               </div>
             </div>
@@ -180,30 +178,11 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-
     <!-- Demo scripts for this page-->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-bar-demo.js"></script>
-    <script src="js/demo/chart-bar-demo-2.js"></script>
-    <script src="js/demo/chart-scatter-demo.js"></script>
-    <script src="js/demo/chart-scatter-demo-2.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/chart-pie-demo-2.js"></script>
+    <script src="js/demo/line.js"></script>
+    <script src="js/demo/bar.js"></script>
+    <script src="js/demo/scatter.js"></script>
+    <script src="js/demo/pie.js"></script>
 
   </body>
 
